@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SpeedGear</string>
+    <string name="title_activity_speed_gear_lauch">SpeedGearLauchActivity</string>
+
+    <string name="hello_speedgear">Hello SpeedGear 1.0!</string>
+    <string name="action_settings">Settings</string>
+</resources>
