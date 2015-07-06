@@ -1,0 +1,19 @@
+This is the designed URI between Android agents and the server side:
+
+__version__ = "0.1"
+
+1.	list all the users
+	[In]	http://localhost:80/?action=getaccounts
+	[Out]	['alice', 'bob']
+
+2.	add a new user
+	http://localhost:80/?action=addaccount&account={"username":"alice", "password":"pass123"}
+
+3.	get the location for user
+	http://localhost:80/?action=getlocation&username="alice"
+
+4.	report the location to server for user
+	http://localhost:80/?action=reportlocation&location={"username":"alice", gps_location:{"longitude":"123.234", dimension:"987.876"} }
+
+5.	calculate the distance between 2 users
+	http://localhost:80/?action=calculatedistance&peers={"from":"alice", "to":"bob"}
