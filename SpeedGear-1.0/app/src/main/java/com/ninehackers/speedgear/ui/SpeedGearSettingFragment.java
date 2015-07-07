@@ -23,27 +23,27 @@ public class SpeedGearSettingFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         dialogView = inflater.inflate(R.layout.dialog_speedgear_settings, null);
-        initData();
+
+        initSettings();
+
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.speedgear_setting_title)
                 .setView(dialogView)
                 .setPositiveButton(R.string.save,
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int whichButton) {
+                            public void onClick(DialogInterface dialog, int whichButton) {
                                 saveSettings();
                             }
                         })
                 .setNegativeButton(R.string.cancel,
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int whichButton) {
+                            public void onClick(DialogInterface dialog, int whichButton) {
                                 dialog.cancel();
                             }
                         }).create();
     }
 
-    private void initData() {
+    private void initSettings() {
         EditText serverAddressText = (EditText) dialogView.findViewById(R.id.server_address_id);
         EditText serverPortText = (EditText) dialogView.findViewById(R.id.server_port_id);
         EditText usernameText = (EditText) dialogView.findViewById(R.id.username_id);
