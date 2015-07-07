@@ -3,7 +3,14 @@
     <string name="title_activity_speed_gear_lauch">SpeedGearLauchActivity</string>
 
     <string name="hello_speedgear">Hello SpeedGear 1.0!</string>
-    <string name="action_settings">Settings</string>
+    <string name="menu_name_settings">Settings</string>
     <string name="menu_name_about">About</string>
     <string name="about_description">Hello, we are speedgears.</string>
+
+    <string name="server_address">Server Address</string>
+    <string name="server_port">Server port</string>
+    <string name="username">Your Name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="speedgear_setting_title">SpeedGear Settings</string>
 </resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:filterTouchesWhenObscured="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/server_address"
+        android:textColor="@color/black">
+    </TextView>
+
+    <EditText
+        android:id="@+id/server_address_id"
+        android:filterTouchesWhenObscured="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="100"
+        android:inputType="text"
+        android:singleLine="true" >
+    </EditText>
+
+    <TextView
+        android:filterTouchesWhenObscured="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/server_port"
+        android:textColor="@color/black">
+    </TextView>
+
+    <EditText
+        android:id="@+id/server_port_id"
+        android:filterTouchesWhenObscured="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="6"
+        android:inputType="number"
+        android:singleLine="true" >
+    </EditText>
+
+    <TextView
+        android:filterTouchesWhenObscured="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textColor="@color/black">
+    </TextView>
+
+    <EditText
+        android:id="@+id/username_id"
+        android:filterTouchesWhenObscured="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="100"
+        android:inputType="text"
+        android:singleLine="true" >
+    </EditText>
+</LinearLayout>
