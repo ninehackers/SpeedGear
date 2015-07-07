@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by hadden_xiao on 2015/7/7.
+ * Created by dabaosod011 on 2015/7/7.
  */
 public class ConfigData {
     private Context mContext;

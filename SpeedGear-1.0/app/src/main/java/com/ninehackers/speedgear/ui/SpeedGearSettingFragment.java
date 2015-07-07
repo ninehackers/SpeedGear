@@ -14,7 +14,7 @@ import com.ninehackers.speedgear.R;
 import com.ninehackers.speedgear.utils.data.ConfigData;
 
 /**
- * Created by hadden_xiao on 2015/7/7.
+ * Created by dabaosod011 on 2015/7/7.
  */
 public class SpeedGearSettingFragment extends DialogFragment {
     private static String LOG_TAG = "SpeedGearSettingFragment";
