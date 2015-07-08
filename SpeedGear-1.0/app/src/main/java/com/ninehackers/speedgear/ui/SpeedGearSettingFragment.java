@@ -64,6 +64,7 @@ public class SpeedGearSettingFragment extends DialogFragment {
 
         if (!StringUtil.isEmpty(username)) {
             usernameText.setText(username);
+            usernameText.setEnabled(false);
         }
     }
 

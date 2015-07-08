@@ -7,6 +7,8 @@
         android:filterTouchesWhenObscured="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/server_address"
         android:textColor="@color/black">
     </TextView>
@@ -16,6 +18,7 @@
         android:filterTouchesWhenObscured="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:maxLength="100"
         android:inputType="text"
         android:singleLine="true" >
@@ -25,6 +28,7 @@
         android:filterTouchesWhenObscured="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:text="@string/server_port"
         android:textColor="@color/black">
     </TextView>
@@ -34,6 +38,7 @@
         android:filterTouchesWhenObscured="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:maxLength="6"
         android:inputType="number"
         android:singleLine="true" >
@@ -43,6 +48,7 @@
         android:filterTouchesWhenObscured="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:text="@string/username"
         android:textColor="@color/black">
     </TextView>
@@ -52,6 +58,7 @@
         android:filterTouchesWhenObscured="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:maxLength="100"
         android:inputType="text"
         android:singleLine="true" >
