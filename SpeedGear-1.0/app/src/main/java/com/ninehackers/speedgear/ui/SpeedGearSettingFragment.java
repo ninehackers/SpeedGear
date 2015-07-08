@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.ninehackers.speedgear.R;
 
+import com.ninehackers.speedgear.utils.StringUtil;
 import com.ninehackers.speedgear.utils.data.ConfigData;
 
 /**
@@ -53,20 +54,20 @@ public class SpeedGearSettingFragment extends DialogFragment {
         String server_port = configData.getSpeedgearServerPort();
         String username = configData.getSpeedgearUsername();
 
-        if (!server_address.equals(null) && server_address.length()!=0 ){
+        if (!StringUtil.isEmpty(server_address)) {
             serverAddressText.setText(server_address);
         }
 
-        if (!server_port.equals(null) && server_port.length()!=0 ){
+        if (!StringUtil.isEmpty(server_port)) {
             serverPortText.setText(server_port);
         }
 
-        if (!username.equals(null) && username.length()!=0 ){
+        if (!StringUtil.isEmpty(username)) {
             usernameText.setText(username);
         }
     }
 
-    private void saveSettings(){
+    private void saveSettings() {
         String server_address = ((EditText) (dialogView.findViewById(R.id.server_address_id))).getText().toString();
         String server_port = ((EditText) (dialogView.findViewById(R.id.server_port_id))).getText().toString();
         String username = ((EditText) (dialogView.findViewById(R.id.username_id))).getText().toString();

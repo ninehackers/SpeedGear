@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import com.ninehackers.speedgear.ui.SpeedGearSettingFragment;
+import com.ninehackers.speedgear.utils.StringUtil;
+import com.ninehackers.speedgear.utils.data.ConfigData;
 
 
 public class SpeedGearLauchActivity extends ActionBarActivity {
@@ -14,6 +17,8 @@ public class SpeedGearLauchActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speedgear_lauch);
+
+        initComponents();
     }
 
     @Override
@@ -49,5 +54,24 @@ public class SpeedGearLauchActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initComponents() {
+        ConfigData configData = new ConfigData(getApplicationContext());
+
+        String server_address = configData.getSpeedgearServerAddress();
+        String server_port = configData.getSpeedgearServerPort();
+        String username = configData.getSpeedgearUsername();
+
+        if (StringUtil.isEmpty(server_address) ||
+                StringUtil.isEmpty(server_port) ||
+                StringUtil.isEmpty(username)) {
+            try {
+                SpeedGearSettingFragment sgSettingDialog = new SpeedGearSettingFragment();
+                sgSettingDialog.show(getFragmentManager(), "dialog");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
