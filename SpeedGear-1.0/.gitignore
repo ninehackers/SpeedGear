@@ -4,5 +4,6 @@
 .DS_Store
 /captures
 okhttp-master
-build
+build/
 dex-cache
+cache.xml
