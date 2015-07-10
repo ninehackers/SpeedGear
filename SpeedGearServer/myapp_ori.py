@@ -4,11 +4,13 @@
 import sys, os, re, time
 import logging
 import redis
-import speedGearUtils
+import bottle
 import BaseHTTPServer
 import urlparse
 import StringIO
 import json
+import Utils
+import setting
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s - - %(asctime)s %(message)s', datefmt='[%d/%b/%Y %H:%M:%S]')
 
@@ -16,11 +18,9 @@ class HttpServerRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     def do_GET(self):
         logging.info("do_GET here.")
-
         parsed_path = urlparse.urlparse(self.path)
         logging.info("parsed_path is %s", parsed_path)
         query_string = urlparse.parse_qs(parsed_path.query)
-        logging.info("query_string is %s", query_string)
 
         message = ""
         if not query_string.has_key("action"):

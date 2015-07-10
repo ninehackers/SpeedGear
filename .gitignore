@@ -6,3 +6,5 @@
 /build
 /captures
 dex-cache
+.db
+.pyc
