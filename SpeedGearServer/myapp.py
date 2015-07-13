@@ -48,7 +48,7 @@ def greet(name='Stranger'):
     return template('Hello {{name}}, Welcome to access SpeedGear!', name=name)
 
 @route('/user', method=['GET', 'POST'])
-def addUser():
+def userhandler():
     qs = urlparse.parse_qs(request.query_string)
     errMsg = "Successfull"
 
@@ -67,7 +67,25 @@ def addUser():
 
     else:
         response.status = 501
-        errMsg = "wrong url format, please use '/user?action=add&name=alice'"
+        errMsg = "wrong url format, please use '/user?action=add&name=alice' or /user?action=listall "
+        return dict(errorMsg = errMsg )
+
+@route('/location', method=['GET', 'POST'])
+def locationhandler():
+    qs = urlparse.parse_qs(request.query_string)
+    errMsg = "Successfull"
+
+    #   /location?action=getlatestlocation&name=alice
+    if qs.has_key('action') and 'getlatestlocation' in qs['action'] and qs.has_key('name'):
+        username = qs["name"][0].strip().strip('"').strip("'")
+        errMsg, latestlocation =  db.getlatestlocation(username)
+        return dict(errorMsg = errMsg, location = latestlocation )
+    elif qs.has_key('action') and 'reportlocation' in qs['action']:
+        # to-do for report locations
+        pass
+    else:
+        response.status = 501
+        errMsg = '''wrong url format, please use '/location?action=getlatestlocation&name=alice' or '/location?action=reportlocation&name=alice&location={longitude:"123.234", dimension:"987.876"}' '''
         return dict(errorMsg = errMsg )
 
 def main():
