@@ -1,3 +1,5 @@
+*.db
+*.pyc
 .gradle
 /local.properties
 /.idea/workspace.xml
@@ -6,5 +8,3 @@
 /build
 /captures
 dex-cache
-*.db
-*.pyc
