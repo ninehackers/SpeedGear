@@ -60,6 +60,21 @@ class DataBase(object):
             logging.exception("listall user failed.")
             return allUsers
 
+    def getlatestlocation(self, username):
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(''' select longitude, dimension from locations where username='%s'; ''' % username)
+            if cursor.fetchone() is not None:
+                logging.exception("user existed for %s." % username)
+                return True, "user existed for %s." % username
+
+            cursor.execute(''' INSERT INTO users(username) VALUES ('%s'); ''' % username)
+            cursor.close()
+        except Exception:
+            logging.exception("add user failed for %s." % username)
+            return False, ("add user failed for: %s, please try again" % username)
+        return False, ("add user success for: %s" % username)
+
     def close(self):
         self.conn.close()
 
