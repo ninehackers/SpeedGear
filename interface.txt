@@ -14,4 +14,4 @@ __version__ = "0.1"
     [In]    /location?action=getlatestlocation&name=alice
 
 4.	report the location to server for user
-    [In]    /location?action=reportlocation&name=alice&location={"longitude":"123.234", dimension:"987.876"}
+    [In]    location?action=reportlocation&name=alice&location={"longitude":"123.234","dimension":"987.876"}

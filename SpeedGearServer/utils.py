@@ -6,14 +6,20 @@ import logging
 import redis
 import sqlite3
 import json
+import datetime
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s - - %(asctime)s %(message)s', datefmt='[%d/%b/%Y %H:%M:%S]')
+logging.basicConfig(
+        filename = "speedgear.log",
+        level=logging.INFO,
+        format='%(levelname)s - - %(asctime)s %(message)s',
+        datefmt='[%d/%b/%Y %H:%M:%S]' )
 
 class DataBase(object):
     def __init__(self):
         self.conn = sqlite3.connect(database='data.db')
 
     def initDB(self, removeExistedData = False):
+        logging.info("DataBase: initDB in.")
         cursor = self.conn.cursor()
         if removeExistedData:   cursor.execute('drop table if exists users')
         if removeExistedData:   cursor.execute('drop table if exists locations')
@@ -34,6 +40,7 @@ class DataBase(object):
         return True
 
     def addUser(self, username):
+        logging.info("DataBase: addUser in.")
         cursor = self.conn.cursor()
         try:
             cursor.execute(''' select username from users where username='%s'; ''' % username)
@@ -50,6 +57,7 @@ class DataBase(object):
         return False, ("add user success for: %s" % username)
 
     def listAllUsers(self):
+        logging.info("DataBase: listAllUsers in.")
         cursor = self.conn.cursor()
         allUsers = []
         try:
@@ -63,7 +71,8 @@ class DataBase(object):
             logging.exception("listall user failed.")
             return allUsers
 
-    def getlatestlocation(self, username):
+    def getLatestLocation(self, username):
+        logging.info("DataBase: getLatestLocation in.")
         cursor = self.conn.cursor()
         try:
             cursor.execute(''' select id from users where username='%s'; ''' % username)
@@ -72,20 +81,39 @@ class DataBase(object):
                 return "user '%s' does not exist" % username, None
             else:
                 userid = userids[0]
-                cursor.execute(''' select longitude, dimension from locations where id='%s' order by create_time desc limit 1; ''' % userid)
+                cursor.execute(''' select longitude, dimension from locations where user_id=%d order by datetime(create_time) desc limit 1; ''' % userid)
                 results = cursor.fetchone()
                 if results is None:
                     return "no location existes for '%s'." % username, None
                 else:
                     longitude, dimension = results[0], results[1]
                     location = {'longitude': longitude, 'dimension': dimension}
+                    #print json.dumps(location)
                     return "Successfull", json.dumps(location)
             cursor.close()
             self.conn.commit()
         except Exception:
             logging.exception("getlatestlocation failed for %s." % username)
-            return False, ("getlatestlocation failed for: %s, please try again" % username)
-        return False, ("getlatestlocation success for: %s" % username)
+            return  ("getlatestlocation failed for: %s, please try again" % username), None
+        return  ("getlatestlocation success for: %s" % username), None
+
+    def addLatestLocation(self, username, longitude, dimension):
+        logging.info("DataBase: addLatestLocation in.")
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute("select id from users where username='%s'; " % username)
+            userids = cursor.fetchone()
+            if userids is None:
+                return 409, "user '%s' does not exist" % username
+            else:
+                userid = userids[0]
+                cursor.execute("insert into locations(user_id,longitude,dimension,create_time) values (?, ?, ?, ?)", (userid,longitude,dimension,datetime.datetime.now()))
+            cursor.close()
+            self.conn.commit()
+        except Exception:
+            logging.exception("addLatestLocation failed for %s." % username)
+            return 500, ("addLatestLocation failed for: %s, please try again" % username)
+        return 200, ("addLatestLocation success for: %s" % username)
 
     def close(self):
         self.conn.close()
