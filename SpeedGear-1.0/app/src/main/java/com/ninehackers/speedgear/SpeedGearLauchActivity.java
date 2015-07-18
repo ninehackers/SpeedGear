@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ninehackers.speedgear.stanley.StanleyDemo;
 import com.ninehackers.speedgear.ui.SpeedGearSettingFragment;
 import com.ninehackers.speedgear.utils.StringUtil;
 import com.ninehackers.speedgear.utils.data.ConfigData;
@@ -17,7 +18,7 @@ public class SpeedGearLauchActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speedgear_lauch);
-
+        doStanleyTest();
         initComponents();
     }
 
@@ -56,6 +57,10 @@ public class SpeedGearLauchActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void doStanleyTest() {
+        StanleyDemo stanleyDemo = new StanleyDemo();
+        boolean isStanley = stanleyDemo.IsStanley();
+    }
     private void initComponents() {
         ConfigData configData = new ConfigData(getApplicationContext());
 
