@@ -11,8 +11,4 @@ public class StanleyDemo {
         Log.d("Stanley", "Yes!");
         return true;
     }
-
-
-
-
 }
