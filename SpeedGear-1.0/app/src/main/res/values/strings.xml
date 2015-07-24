@@ -13,4 +13,8 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="speedgear_setting_title">SpeedGear Settings</string>
+
+    <string name="check_the_server">Check the Server</string>
+    <string name="ping_server_success">Successfully connect to the server.</string>
+    <string name="ping_server_falied">Failed to connect to the server.</string>
 </resources>

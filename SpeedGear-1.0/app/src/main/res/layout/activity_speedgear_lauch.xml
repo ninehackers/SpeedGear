@@ -23,4 +23,14 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/check_the_server"
+        android:textAllCaps="false"
+        android:id="@+id/btn_ping_server"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
 </RelativeLayout>
